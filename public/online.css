@@ -1,0 +1,31 @@
+:root { color-scheme:dark; font-family:system-ui,sans-serif; }
+body { display:flex; flex-direction:column; box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); }
+#game-host { position:relative; flex:1; min-height:0; margin-inline:env(safe-area-inset-left,0px) env(safe-area-inset-right,0px); }
+body:not(.online) #game-host { margin-bottom:env(safe-area-inset-bottom,0px); }
+#online-bar { flex-shrink:0; padding:4px calc(8px + env(safe-area-inset-right,0px)) calc(4px + env(safe-area-inset-bottom,0px)) calc(8px + env(safe-area-inset-left,0px)); background:#190e32; border-top:2px solid #ffbe36; }
+#online-bar:not([hidden]), .bar-actions { display:flex; flex-wrap:wrap; gap:4px 8px; align-items:center; }
+#online-bar span { min-width:0; overflow-wrap:anywhere; font-size:13px; }
+.bar-actions { max-width:100%; }
+.bar-actions button { min-width:44px; max-width:100%; }
+#game-status:empty { position:absolute; }
+button,input { font:inherit; box-sizing:border-box; min-height:44px; border-radius:5px; }
+button { cursor:pointer; background:linear-gradient(#ffe47e,#ff9b13); color:#25142b; border:2px solid #ffb723; padding:7px 12px; flex-shrink:0; touch-action:manipulation; }
+button:disabled { cursor:wait; opacity:.6; }
+button:not(:disabled):hover { background:linear-gradient(#fff0ad,#ffb643); }
+button:focus-visible,input:focus-visible,a:focus-visible { outline:3px solid #80e0ff; outline-offset:2px; }
+dialog { box-sizing:border-box; color:#fff1d4; background:#211431; border:3px solid #ffbd36; border-radius:9px; inset:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px); width:min(550px,calc(100vw - 20px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))); max-height:calc(100dvh - 20px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)); padding:20px; overflow-y:auto; overflow-wrap:anywhere; overscroll-behavior:contain; box-shadow:0 0 30px #000a; }
+dialog::backdrop { background:#100b21cf; }
+dialog h1 { font-size:23px; margin:0 0 12px; }
+dialog p { line-height:1.45; }
+dialog form { display:grid; gap:12px; }
+dialog label { display:grid; gap:6px; }
+dialog input { width:100%; padding:8px; background:#100b21; color:white; border:1px solid #8c70af; font-size:16px; }
+dialog .actions { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+dialog .entry { border-top:1px solid #665071; padding:12px 0; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+dialog .entry strong { flex:1 1 140px; overflow-wrap:anywhere; }
+dialog .message { color:#ffe38b; min-height:1.5em; white-space:pre-wrap; }
+@media (max-width:520px) {
+  .bar-actions { flex-basis:100%; }
+  .bar-actions button { flex:1 1 auto; padding-inline:7px; }
+}
+@media (max-height:450px) { dialog { padding:10px 16px; } dialog h1 { font-size:19px; } dialog form { gap:6px; } }
